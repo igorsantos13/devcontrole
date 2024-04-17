@@ -6,7 +6,7 @@ export default function TicketItem() {
     <>
       <tr className="border-b-2 border-b-slate-200 h-16 last:border-b-0 bg-slate-100 hover:bg-gray-200 duration-200">
         <td className=" text-black pl-1">Mercado Silva</td>
-        <td className=" text-black hidden sm:block">17/04/2024</td>
+        <td className=" text-black hidden pl-1 my-4 sm:block">17/04/2024</td>
         <td className="">
           <span className="bg-green-500 px-2 py-1">ABERTO</span>
         </td>

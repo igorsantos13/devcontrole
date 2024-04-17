@@ -5,6 +5,7 @@ import { authOptions } from "@/lib/auth";
 import { Container } from "@/components/container";
 import Link from "next/link";
 import TicketItem from "../components/tickets";
+import CardCustomer from "../components/cardcustomer";
 
 export default async function Customer() {
   const session = await getServerSession(authOptions);
@@ -16,28 +17,19 @@ export default async function Customer() {
     <Container>
       <main className="mt-9 mb-2">
         <div className="flex items-center justify-between">
-          <span className="text-black text-3xl font-bold">Chamados</span>
-          <Link href={"/dashboard/new"} />
-          <button className="bg-blue-600 px-4 py-1 text-white font-thin rounded">
-            Abrir chamado
-          </button>
+          <h1 className="text-3xl font-bold text-black">Meus clientes</h1>
+          <Link
+            href="/dashboard/customer/new"
+            className="bg-blue-500 text-white px-4 py-1 rounded"
+          >
+            Novo cliente
+          </Link>
         </div>
-
-        <table className="min-w-full my-2">
-          <thead>
-            <tr>
-              <th className="text-black font-medium text-left">CLIENTE</th>
-              <th className="text-black font-medium text-left hidden sm:block">
-                DATA CADASTRO
-              </th>
-              <th className="text-black font-medium text-left">STATUS</th>
-              <th className="text-black font-medium text-left">#</th>
-            </tr>
-          </thead>
-          <tbody>
-            <TicketItem />
-          </tbody>
-        </table>
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-2">
+          <CardCustomer />
+          <CardCustomer />
+          <CardCustomer />
+        </section>
       </main>
     </Container>
   );
