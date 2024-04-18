@@ -1,34 +1,103 @@
-"use client"
+"use client";
 
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Input from "@/components/input";
 
 const schema = z.object({
   name: z.string().min(1, "O campo nome é obrigatório"),
-  email: z.string().email("Digite um email valido.").min(1, "O email é obrigatório."),
-  phone: z.string().refine((value) => {
-    return /^(?:\(\d{2}\)\s?)?\d{9}$/.test(value) || /^\d{2}\s\d{9}$/.test(value) || /^\d{11}$/.test(value)
-  }, {
-    message: "O numero de telefone deve estar (DD) 999999999"
-  }),
+  email: z
+    .string()
+    .email("Digite um email valido.")
+    .min(1, "O email é obrigatório."),
+  phone: z.string().refine(
+    (value) => {
+      return (
+        /^(?:\(\d{2}\)\s?)?\d{9}$/.test(value) ||
+        /^\d{2}\s\d{9}$/.test(value) ||
+        /^\d{11}$/.test(value)
+      );
+    },
+    {
+      message: "O numero de telefone deve estar (DD) 999999999",
+    }
+  ),
   address: z.string(),
-})
+});
 
-type FormData = z.infer<typeof schema>
+type FormData = z.infer<typeof schema>;
 
 export function NewCustomerForm() {
-  const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
-    resolver: zodResolver(schema)
-  })
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+  });
+
+  function handleRegisterCustomer(data: FormData) {
+    console.log(data);
+  }
 
   return (
-    <form>
-      <label>Nome completo</label>
-      <input
+    <form
+      className="flex flex-col mt-6"
+      onSubmit={handleSubmit(handleRegisterCustomer)}
+    >
+      <label className="mb-1 text-lg text-black font-medium">
+        Nome completo
+      </label>
+      <Input
         type="text"
-        placeholder="Digite o nome completo..."
+        name="name"
+        placeholder="Digite o nome completo"
+        error={errors.name?.message}
+        register={register}
       />
+
+      <section className="flex gap-2 mt-2 my-2 flex-col sm:flex-row">
+        <div className="flex-1">
+          <label className="mb-1 text-lg text-black font-medium">
+            Telefone
+          </label>
+          <Input
+            type="number"
+            name="phone"
+            placeholder="Exemplo: (dd) 99999-9999"
+            error={errors.phone?.message}
+            register={register}
+          />
+        </div>
+        <div className="flex-1">
+          <label className="mb-1 text-lg text-black font-medium">Email</label>
+          <Input
+            type="email"
+            name="email"
+            placeholder="nome@email.com"
+            error={errors.email?.message}
+            register={register}
+          />
+        </div>
+      </section>
+      <div>
+        <label className="mb-1 text-lg font-medium text-black">Indereco</label>
+        <Input
+          type="text"
+          name="address"
+          placeholder="manda o indereco"
+          error={errors.address?.message}
+          register={register}
+        />
+      </div>
+
+      <button
+        type="submit"
+        className="bg-blue-500 my-4 px-2 h-11 rounded text-white font-bold"
+      >
+        Cadastrar
+      </button>
     </form>
-  )
+  );
 }

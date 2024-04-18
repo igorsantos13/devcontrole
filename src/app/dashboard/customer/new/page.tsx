@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
+import { NewCustomerForm } from "../components/form";
 
 export default async function NewCustomer() {
   const session = await getServerSession(authOptions);
@@ -25,6 +26,8 @@ export default async function NewCustomer() {
           <h1 className="text-3xl font0bold text-black">Novo Cliente</h1>
         </div>
       </main>
+
+      <NewCustomerForm />
     </Container>
   );
 }
