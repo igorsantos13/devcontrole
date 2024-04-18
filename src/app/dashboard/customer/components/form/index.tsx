@@ -49,7 +49,7 @@ export function NewCustomerForm({ userId }: { userId: string }) {
       userId: userId,
       address: data.address,
     });
-
+    router.refresh();
     router.replace("/dashboard/customer");
   }
 
