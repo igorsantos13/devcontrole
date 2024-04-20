@@ -59,14 +59,8 @@ async function Dashboard() {
         </table>
 
         {tickets.length <= 0 && (
-          <h2 className="text-gray-600">
-            Você não possui nenhum cliente.{" "}
-            <Link
-              className="text-blue-500 font-bold"
-              href={"/dashboard/customer/new"}
-            >
-              Cadastrar cliente
-            </Link>
+          <h2 className="text-gray-600 px-2">
+            Nenhum ticket foi encontrado...{" "}
           </h2>
         )}
       </main>
