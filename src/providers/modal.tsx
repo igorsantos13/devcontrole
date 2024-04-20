@@ -1,0 +1,33 @@
+"use client";
+import { Children, createContext, ReactNode, useState } from "react";
+import { TicketProps } from "@/utils/ticket.type";
+import { CustomerProps } from "@/utils/customer.type";
+import TicketModal from "@/components/modal/TicketModal";
+
+interface ModalContextData {
+  visible: boolean;
+  handleModalVisible: () => void;
+  ticket: TicketInfo | undefined;
+}
+
+interface TicketInfo {
+  ticket: TicketProps;
+  customer: CustomerProps;
+}
+
+export const ModalContext = createContext({} as ModalContextData);
+
+export const ModalProvider = ({ children }: { children: ReactNode }) => {
+  const [visible, setVisible] = useState(false);
+  const [ticket, setTicket] = useState<TicketInfo>();
+  function handleModalVisible() {
+    setVisible(!visible);
+  }
+
+  return (
+    <ModalContext.Provider value={{ visible, handleModalVisible, ticket }}>
+      {visible && <TicketModal />}
+      {children}
+    </ModalContext.Provider>
+  );
+};
