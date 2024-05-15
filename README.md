@@ -1,8 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# DevControle
 
-## Getting Started
+![devcontrole](./public/screenshot.png)
 
-First, run the development server:
+## What is this project?
+
+Manage your clients tickets with this app. Developed in this [course on Udemy](https://www.udemy.com/course/nextjs-zero-ao-avancado/).
+
+### Goal/Achievements
+
+- Learn about authentication using next-auth.
+- Learn about mongodb and prisma.
+
+### Built with:
+
+- NextJS
+- TailwindCSS
+- TypeScript
+- next-auth
+- prisma
+- mongodb
+- zod
+
+> You can check the result here: [devcontrole website](https://devcontrole-seven.vercel.app/)
+
+### How to run this project
+
+- [Clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repo to your machine
+- Make sure that you have [node](https://nodejs.org/en) installed
+- then run the following command on you terminal:
 
 ```bash
 npm run dev
@@ -14,23 +39,12 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Contribuition
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+You're free to make any change on the code base, I would love to discuss about this project and tech with you.
 
-## Learn More
+#### Socials
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[Twitter/X](https://x.com/igormustcode)
